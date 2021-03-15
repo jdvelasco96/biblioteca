@@ -50,14 +50,23 @@ public class Biblioteca {
 		ArrayList<Socio> auxList = new ArrayList<>();
 		for (Socio socio : auxList) {
 			if (socio.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
-				
+				auxList.add(socio);
 			}
 		}
 		
-		
 		return auxList;
 	}
-	
+	public Socio searchSocioId(int id) {
+		Socio retorno = new Socio();
+		for (Socio buscar : socios) {
+			if (buscar.getId() == id) {
+				retorno = buscar;
+			}
+		}
+		return retorno;
+		
+	}
+
 	public Libro searchLibroIsbn(int ISBN) {
 		Libro retorno = new Libro();
 		for (Libro bus : libros) {
@@ -68,4 +77,25 @@ public class Biblioteca {
 		return retorno;
 		
 	}
+	public ArrayList<Libro> searchLibroAutor(String autor) {
+		ArrayList<Libro> auxList = new ArrayList<>();
+		for (Libro Buscar : auxList) {
+			if (Buscar.getAutor().toLowerCase().contains(autor.toLowerCase())) {
+				auxList.add(Buscar);
+			}
+		}
+		
+		return auxList;
+	}
+	public ArrayList<Libro> searchLibroT(String titulo) {
+		ArrayList<Libro> auxList = new ArrayList<>();
+		for (Libro Buscar : auxList) {
+			if (Buscar.getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
+				auxList.add(Buscar);
+			}
+		}
+		
+		return auxList;
+	}
+	
 }
