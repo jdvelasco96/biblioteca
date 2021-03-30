@@ -18,8 +18,8 @@ public class Socio {
 		
 	}
 
-	public Socio(int id, String nombre, int tlfno, String email) {
-		this.id = id;
+	public Socio( String nombre, int tlfno, String email) {
+		setId();
 		this.nombre = nombre;
 		this.tlfno = tlfno;
 		this.email = email;

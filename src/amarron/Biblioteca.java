@@ -1,11 +1,88 @@
 package amarron;
 
+import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Biblioteca {
 	
-	private ArrayList<Libro> libros = new ArrayList<>();
-	private ArrayList<Socio> socios = new ArrayList<>();
+	private ArrayList<Libro> libros = new ArrayList<Libro>();
+	private ArrayList<Socio> socios = new ArrayList<Socio>();
+	
+	// LECTURA Y CARGA DE LOS LIBROS
+	public void cargaL() {
+		String fichero = "C:\\Users\\Ceinmark\\eclipse-workspace\\amarron\\src\\amarron\\datos.csv";
+		Libro libro = new Libro();
+		
+		BufferedReader br;
+		String[] datos = new String[4];
+		try {
+			br = new BufferedReader(new FileReader(fichero));
+			
+			do {
+				datos = (br.readLine().split(";"));
+				libro = new Libro(datos[0],datos[1],Integer.parseInt(datos[2]),Float.parseFloat(datos[3]));
+				
+				this.libros.add(libro);
+				
+			}while(br.ready());
+			
+		} catch (Exception e) {
+			System.out.println("ocurrio un error");
+		}
+		
+		
+	}
+	
+	// LECTURA Y CARGA DE LOS SOCIOS
+	public void cargaS() {
+	
+		Socio socio = new Socio();
+		String fichero = "";
+		BufferedReader br;
+		String[] datos = new String[3];
+		try {
+			br = new BufferedReader(new FileReader(fichero));
+			
+			do {
+				datos = (br.readLine().split(";"));
+				socio= new Socio(datos[0],Integer.parseInt(datos[1]),datos[2]);
+				this.socios.add(socio);
+				
+			}while(br.ready());
+			
+		} catch (Exception e) {
+			System.out.println("ocurrio un error");
+		}
+		
+		
+	}
+	
+	public ArrayList<Libro> getLibros(){
+		return this.libros;
+	}
+	public ArrayList<Socio> getSocios(){
+		return this.socios;
+	}
+	
+	public void guardarDatos() {
+		
+		BufferedWriter bw = null;
+		try {
+			for (Libro libro : libros) {
+				bw = new BufferedWriter(new FileWriter("Copia.txt",false));
+				bw.write(libro.getV());
+				
+			}
+			bw.close();
+		} catch (Exception e) {
+			System.out.println("error");
+		}
+		
+	}
+	
 	
 	public void altaLibro() {
 		Libro libroNuevo = new Libro();
