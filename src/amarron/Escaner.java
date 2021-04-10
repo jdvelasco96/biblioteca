@@ -16,7 +16,7 @@ public class Escaner {
 	}
 	
 	public String nextLine() {
-		String string = esc.next();
+		String string = esc.nextLine();
 		return string;
 	}
 
@@ -44,10 +44,12 @@ public class Escaner {
 			}
 				if(pasa) {
 					ent = Integer.parseInt(frase);
+					
 					break;
 				}
 		
 		}while(noContinuar);
+		
 		return ent;
 	}
 	

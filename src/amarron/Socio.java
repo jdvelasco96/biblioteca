@@ -2,6 +2,7 @@ package amarron;
 
 public class Socio {
 
+	private int dni;
 	private int id;
 	private String nombre;
 	private int tlfno;
@@ -10,19 +11,21 @@ public class Socio {
 	private static int ultimoId = 0;
 	
 	public Socio() {
-		
+		dni = 0;
 		id = 0;
 		nombre = "";
 		tlfno = 0;
 		email ="";
 		
 	}
-
-	public Socio( String nombre, int tlfno, String email) {
-		setId();
+	
+	public Socio( int id,int dni,String nombre, int tlfno, String email) {
+		this.id = id;
+		this.dni = dni;
 		this.nombre = nombre;
 		this.tlfno = tlfno;
 		this.email = email;
+		ultId(id);
 	}
 
 	public int getId() {
@@ -41,6 +44,17 @@ public class Socio {
 			}
 		}
 		
+	}
+	public void ultId(int dato) {
+		ultimoId = dato;
+	}
+
+	public int getDni() {
+		return dni;
+	}
+
+	public void setDni(int dni) {
+		this.dni = dni;
 	}
 
 	public String getNombre() {
@@ -67,7 +81,20 @@ public class Socio {
 		this.email = email;
 	}
 	
-	
+	public String getV() {
+		
+		return getId()+";"+getDni()+";"+getNombre().trim()+";"+getTlfno()+";"+getEmail().trim()+";"+"\n";
+	}
+
+	@Override
+	public String toString() {
+		return "Socio: \n"
+				+ "Id =" + getId() + "\n"
+						+ "Dni =" + getDni() + "\n"
+								+ "Nombre =" + getNombre().trim() + "\n"
+										+ "Telefono =" + getTlfno() + "\n"
+												+ "Email =" + getEmail().trim() + "\n";
+	}
 	
 	
 

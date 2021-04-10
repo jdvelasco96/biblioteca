@@ -10,16 +10,17 @@ public class Libro {
 	
 	private static int ultimoIsbn = 0;
 	
-	public Libro(String titulo, String autor, int ejemplares, float precio) {
-		setIsbn();
+	public Libro(String titulo, String autor, int ejemplares, float precio,int isbn) {
+		
 		this.titulo = titulo;
 		this.autor = autor;
 		this.ejemplares = ejemplares;
 		this.precio = precio;
+		this.isbn = isbn;
+		ultIsbn(isbn);
 		
 	}
 	
-
 	public Libro() {
 		isbn = 0;
 		ejemplares = 0;
@@ -28,27 +29,30 @@ public class Libro {
 		titulo = "";
 	}
 
-
+	public void ultIsbn(int dato) {
+		ultimoIsbn = dato;
+	}
+	
 	public int getIsbn() {
 		return isbn;
 	}
 	
 	public void setIsbn() {
 		
-		if(ultimoIsbn >=100) {
+		if(ultimoIsbn >=1000) {
 			isbn = ultimoIsbn + 1;
 			ultimoIsbn += 1;
 		}else {
 			if(ultimoIsbn == 0) {
-				isbn = 100;
-				ultimoIsbn = 100;
+				isbn = 1000;
+				ultimoIsbn = 1000;
 			}
 		}
 		
 	}
 	
 	public String getV() {
-		return getTitulo() + ";" + getAutor() + ";" + getEjemplares() + ";" + getPrecio() + "\n";
+		return getTitulo().trim() + ";" + getAutor().trim() + ";" + getEjemplares() + ";" + getPrecio() + ";"+getIsbn() +";";
 	}
 	
 	public void setIsbn(int iSBN) {
